@@ -1,13 +1,13 @@
 VERSION=1.0-2.6.1
-PROJECT_ID=google_containers
-PROJECT=gcr.io/${PROJECT_ID}
+PROJECT_ID=kubernetes-kafka
+PROJECT=terencedeng
 
 all: build
 
 build:
-	docker build --pull -t ${PROJECT}/kubernetes-kafka:${VERSION} .
+	docker build --pull -t ${PROJECT}/${PROJECT_ID}:${VERSION} .
 
 push: build
-	gcloud docker -- push ${PROJECT}/kubernetes-kafka:${VERSION}
+	docker push ${PROJECT}/${PROJECT_ID}:${VERSION}
 
 .PHONY: all build push
